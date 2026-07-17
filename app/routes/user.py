@@ -52,6 +52,8 @@ from datetime import datetime, timezone
 from uuid import UUID
 import os
 import shutil
+from typing import Optional
+
 from fastapi import APIRouter, Depends, HTTPException, Query, File, UploadFile
 from sqlalchemy.orm import Session
 from app.database import SessionLocal
@@ -120,7 +122,7 @@ def create_post(
 # -----------------------------
 @router.get("/posts")
 def get_posts(
-    category_id: int | None = Query(default=None),
+    category_id: Optional[int] = Query(default=None),
     db: Session = Depends(get_db)
 ):
     """

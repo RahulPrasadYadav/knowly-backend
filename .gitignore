@@ -6,3 +6,9 @@ kapp/
 *.pyc
 backend/uploads/
 uploads/
+.venv-k/
+
+env/
+__pycache__/
+*.sqlite3
+*.db

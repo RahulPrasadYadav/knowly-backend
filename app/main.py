@@ -1,13 +1,9 @@
 from fastapi import FastAPI
 from fastapi.staticfiles import StaticFiles
-from app.database import Base, engine
 from app.routes import user, feed, admin
 from app.routes import category
 from app.routes.auth import router as auth_router
 from fastapi.middleware.cors import CORSMiddleware
-Base.metadata.create_all(bind=engine)
-
-
 
 app = FastAPI(title="Knowledge Startup Backend")
 
