@@ -1,10 +1,16 @@
-from sqlalchemy import Column, Integer, String
-from app.database import Base
+from typing import Optional
 
-class Category(Base):
-    __tablename__ = "categories"
+from pydantic import BaseModel
 
-    id = Column(Integer, primary_key=True, index=True)
-    name = Column(String, unique=True, index=True)
-    # Yeh line add karni padegi:
-    image_url = Column(String, nullable=True)
+
+class CategoryRead(BaseModel):
+    """API representation of a category.
+
+    Database tables belong in ``app.models``.  Keeping this as a Pydantic
+    schema prevents it from being included in Alembic's metadata.
+    """
+
+    id: int
+    name: Optional[str] = None
+
+    model_config = {"from_attributes": True}
